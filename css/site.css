@@ -1,8 +1,8 @@
-body, h1, h2, h3, h4, h5, h6 {
+body, h1, h2, h3, h4, h5, h6, span {
     font-family: 'Helvetica Neue';
     font-weight: 350;
 }
-h1 {
+h2 {
   color:#3D3D3D;
   font-size: 24px;
 
@@ -28,10 +28,14 @@ div.col-8 div {
 
 }
 
-.keyfigures {
-padding-top: 230px;
-/*position: fixed;*/
-width: 100%;
-color:#3D3D3D;
 
+.carte {
+  height: 275px;
+  width: 75%;
+  margin: 0 auto;
+}
+
+.description{
+  font-size: 14px;
+  text-align: justify;
 }
