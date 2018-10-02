@@ -1,10 +1,14 @@
 body, h1, h2, h3, h4, h5, h6, span {
-    font-family: 'Helvetica Neue';
-    font-weight: 350;
+    font-family: 'Source Sans Pro', sans-serif;
 }
 h2 {
   color:#3D3D3D;
-  font-size: 24px;
+  font-size: 20px;
+
+}
+h4 {
+  color:#3D3D3D;
+  font-size: 20px;
 
 }
 
@@ -28,6 +32,18 @@ div.col-8 div {
 
 }
 
+hr{
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+#chart{
+    width:100%;
+}
+
+.mapSection{
+  padding-top: 80px;
+}
 
 .carte {
   height: 275px;
@@ -38,4 +54,10 @@ div.col-8 div {
 .description{
   font-size: 14px;
   text-align: justify;
+}
+
+.dc-chart g.row text {
+    dominant-baseline: middle;
+    fill: #333;
+    font-size: 0.8em;
 }
