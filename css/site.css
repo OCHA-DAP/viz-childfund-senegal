@@ -37,6 +37,10 @@ hr{
   margin-bottom: 5px;
 }
 
+.kf span {
+    color: #7AB800;
+}
+
 #chart{
     width:100%;
 }
@@ -59,5 +63,5 @@ hr{
 .dc-chart g.row text {
     dominant-baseline: middle;
     fill: #333;
-    font-size: 0.8em;
+    font-size: 0.9em;
 }
