@@ -1,11 +1,10 @@
-
 // Generate key figures
 var formatDecimalComma = d3.format(",.0f");
 
 function generateKeyFigures (data) {
 	htm = ''
 	for(var k = 0, length3 = data.length; k < length3; k++){
-		htm+= '<div class="col-md-6 col-sm-6"><h4 class="kf"><span>'+formatDecimalComma(data[k]['#reached'])+'</span></h4><h6>'+data[k]['#meta+indicators']+'<h6></div>'
+		htm+= '<div class="col-md-6 col-sm-6"><h4 class="kf"><span>'+formatDecimalComma(data[k]['#reached'])+'</span></h4><h6>'+data[k]['#meta+indicators']+'</h6></div>'
 	}
 	$('.keyFigures').html(htm)
 }
@@ -17,25 +16,43 @@ var sortData = function (d1, d2) {
     return 0;
 };
 
-var blue = '#007CE0';
-var blueLight = '#72B0E0';
+var blue = '#7AB800';
+var blueLight = '#007A45'//'#72B0E0';
 
-function generateSectorCharts(data,chartID) {
-	var chart = dc.rowChart('#'+chartID+'');
+function generateSectorCharts(dataS, dataB, chartID) {
+	var chartS = dc.rowChart('#'+chartID+'S');
+    var chartB = dc.rowChart('#'+chartID+'B');
 
-	var cf = crossfilter(data);
+	var cfS = crossfilter(dataS);
+    var cfB = crossfilter(dataB);
 
-	var dim = cf.dimension(function(d){
+	var dimS = cfS.dimension(function(d){
 		return d.indicateur;
 	});
 
-	var group  = dim.group().reduceSum(function(d){ return d.valeur;});
+	var groupS  = dimS.group().reduceSum(function(d){ return d.valeur;});
+    var dimB = cfB.dimension(function(d){
+		return d.indicateur;
+	});
 
-	chart
-		  .width(350)
-		  .height(300)
-		  .dimension(dim)
-		  .group(group)
+	var groupB  = dimB.group().reduceSum(function(d){ return d.valeur;});
+
+	chartS
+		  .width(400)
+		  .height(150)
+		  .dimension(dimS)
+		  .group(groupS)
+		  .colors(blueLight)
+		  .data(function(group){
+		  	return group.top(Infinity);
+		  })
+		  .elasticX(true)
+		  .xAxis().ticks(4);
+    chartB
+		  .width(400)
+		  .height(150)
+		  .dimension(dimB)
+		  .group(groupB)
 		  .colors(blueLight)
 		  .data(function(group){
 		  	return group.top(Infinity);
@@ -55,30 +72,107 @@ var indicsDataCall = $.ajax({
 
 var dataCall = $.ajax({
 	type: 'GET',
-	url: 'https://proxy.hxlstandard.org/data.json?strip-headers=on&url=https%3A%2F%2Fdocs.google.com%2Fspreadsheets%2Fd%2F1uLK2ZRKi_cq1gDMYuAa2-uUSSqgQ9eqU2oeL_UxAG0U%2Fedit%23gid%3D1328099099',
+	url: 'https://proxy.hxlstandard.org/data.json?strip-headers=on&url=https%3A%2F%2Fdocs.google.com%2Fspreadsheets%2Fd%2F1uLK2ZRKi_cq1gDMYuAa2-uUSSqgQ9eqU2oeL_UxAG0U%2Fedit%23gid%3D1688365801',
 	dataType: 'json',
 });
+// description
+var descriptionCall = $.ajax({ 
+    type: 'GET', 
+    url: 'https://proxy.hxlstandard.org/data.json?strip-headers=on&url=https%3A%2F%2Fdocs.google.com%2Fspreadsheets%2Fd%2F1uLK2ZRKi_cq1gDMYuAa2-uUSSqgQ9eqU2oeL_UxAG0U%2Fedit%23gid%3D187500782',
+    dataType: 'json',
+});
+
 
 $.when(indicsDataCall, dataCall).then(function(indicsDataArgs, dataArgs){
 	var indics = hxlProxyToJSON(indicsDataArgs[0]);
 	var data = hxlProxyToJSON(dataArgs[0])
-	generateKeyFigures(indics);
-	// console.log(data)
+	generateKeyFigures(data);
+//	 console.log(data)
 	// generateCharts(data);
 	educationData = [],
+    educationDataS = [],
+    educationDataB = [],
 	protectionData= [],
+    protectionDataS= [],
+    protectionDataB= [],
 	santeData	  =	[],
-	mExistenceData= [];
-	for (d in data){
-		data[d]['#sector'] == 'Education'? educationData.push({indicateur:data[d]['#indicator'],valeur:parseInt(data[d]['#reached'])}):
-		data[d]['#sector'] == 'Protection'? protectionData.push({indicateur:data[d]['#indicator'],valeur:parseInt(data[d]['#reached'])}):
-		data[d]['#sector'] == 'Santé/Nutrition'? santeData.push({indicateur:data[d]['#indicator'],valeur:parseInt(data[d]['#reached'])}):
-		data[d]['#sector'] == "Moyens d'existence"? mExistenceData.push({indicateur:data[d]['#indicator'],valeur:parseInt(data[d]['#reached'])}): null;
+    santeDataS	  =	[],
+    santeDataB	  =	[],
+	mExistenceData= [],
+    mExistenceDataB= [],
+    mExistenceDataS= [];
+    
+	for (d in indics) {
+		indics[d]['#sector'] == 'Education'? educationData.push({type:indics[d]['#indicator+type'],indicateur:indics[d]['#indicator'],valeur:parseInt(indics[d]['#reached'])}):
+		indics[d]['#sector'] == 'Protection'? protectionData.push({type:indics[d]['#indicator+type'],indicateur:indics[d]['#indicator'],valeur:parseInt(indics[d]['#reached'])}):
+		indics[d]['#sector'] == 'Santé/Nutrition'? santeData.push({type:indics[d]['#indicator+type'],indicateur:indics[d]['#indicator'],valeur:parseInt(indics[d]['#reached'])}):
+		indics[d]['#sector'] == "Moyens d'existence"? mExistenceData.push({type:indics[d]['#indicator+type'],indicateur:indics[d]['#indicator'],valeur:parseInt(indics[d]['#reached'])}): null;
 	}
-	generateSectorCharts(educationData, 'education');
-	generateSectorCharts(protectionData, 'protection');
-	generateSectorCharts(santeData, 'sante');
-	generateSectorCharts(mExistenceData, 'mExistence');
+    
+    for(d in educationData){
+		if (educationData[d]['type'] == 'Bénéficiaires') { 
+            educationDataS.push({indicateur:educationData[d]['indicateur'],valeur:parseInt(educationData[d]['valeur'])});
+        } 
+        
+        
+    };
+       for(d in educationData){
+		if (educationData[d]['type'] == 'Structure') { 
+            educationDataB.push({indicateur:educationData[d]['indicateur'],valeur:parseInt(educationData[d]['valeur'])});
+        } 
+        
+       
+    };
+    
+      for(d in protectionData){
+		if (protectionData[d]['type'] == 'Bénéficiaires') { 
+            protectionDataS.push({indicateur: protectionData[d]['indicateur'],valeur:parseInt(protectionData[d]['valeur'])});
+        } 
+        
+        
+    };
+       for(d in protectionData){
+		if (protectionData[d]['type'] == 'Structure') { 
+            protectionDataB.push({indicateur:protectionData[d]['indicateur'],valeur:parseInt(protectionData[d]['valeur'])});
+        } 
+        
+       
+    };	
+    
+    for(d in mExistenceData){
+		if (mExistenceData[d]['type'] == 'Bénéficiaires') { 
+            mExistenceDataS.push({indicateur: mExistenceData[d]['indicateur'],valeur:parseInt(mExistenceData[d]['valeur'])});
+        } 
+        
+        
+    };
+       for(d in mExistenceData){
+		if (mExistenceData[d]['type'] == 'Structure') { 
+            mExistenceDataB.push({indicateur:mExistenceData[d]['indicateur'],valeur:parseInt(mExistenceData[d]['valeur'])});
+        } 
+        
+       
+    };		
+    for(d in santeData){
+		if (santeData[d]['type'] == 'Bénéficiaires') { 
+            santeDataS.push({indicateur: santeData[d]['indicateur'],valeur:parseInt(santeData[d]['valeur'])});
+        } 
+        
+        
+    };
+       for(d in santeData){
+		if (santeData[d]['type'] == 'Structure') { 
+            santeDataB.push({indicateur:santeData[d]['indicateur'],valeur:parseInt(santeData[d]['valeur'])});
+        } 
+        
+       
+    };		
+     
+	
+	generateSectorCharts(educationDataS, educationDataB, 'education');
+	generateSectorCharts(protectionDataS, protectionDataB, 'protection');
+	generateSectorCharts(santeDataS, santeDataB, 'sante');
+	generateSectorCharts(mExistenceDataS, mExistenceDataS, 'mExistence');
 });
 
 function hxlProxyToJSON(input){
