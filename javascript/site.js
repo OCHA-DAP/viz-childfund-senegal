@@ -16,6 +16,11 @@ var sortData = function (d1, d2) {
     return 0;
 };
 
+function generateDescription(descriptionData){
+    console.log(descriptionData[0]['#description'])
+    $('#description-text h2').text(descriptionData[0]['#description+title']);
+    $('#description-text p').text(descriptionData[0]['#description'])
+}
 var blue = '#7AB800';
 var blueLight = '#007A45'//'#72B0E0';
 
@@ -75,11 +80,16 @@ var dataCall = $.ajax({
 	url: 'https://proxy.hxlstandard.org/data.json?strip-headers=on&url=https%3A%2F%2Fdocs.google.com%2Fspreadsheets%2Fd%2F1uLK2ZRKi_cq1gDMYuAa2-uUSSqgQ9eqU2oeL_UxAG0U%2Fedit%23gid%3D1688365801',
 	dataType: 'json',
 });
-// description
+// description text
 var descriptionCall = $.ajax({ 
     type: 'GET', 
     url: 'https://proxy.hxlstandard.org/data.json?strip-headers=on&url=https%3A%2F%2Fdocs.google.com%2Fspreadsheets%2Fd%2F1uLK2ZRKi_cq1gDMYuAa2-uUSSqgQ9eqU2oeL_UxAG0U%2Fedit%23gid%3D187500782',
     dataType: 'json',
+});
+$.when(descriptionCall).then(function(descriptionArgs){
+    var descriptionData = hxlProxyToJSON(descriptionArgs);
+//    console.log(descriptionData)
+   generateDescription(descriptionData);
 });
 
 

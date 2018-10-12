@@ -37,6 +37,16 @@ hr{
   margin-bottom: 5px;
 }
 
+h1 {
+	font-family: 'Gotham-Bold';
+	font-size: 19px;
+	margin-top: 0;
+}
+
+h1+p {
+	margin-bottom: 20px;
+}
+
 .kf span {
     color: #7AB800;
 }
@@ -55,10 +65,10 @@ hr{
   margin: 0 auto;
 }
 
-.description{
+/*.description{
   font-size: 14px;
   text-align: justify;
-}
+}*/
 
 .dc-chart g.row text {
     dominant-baseline: middle;
