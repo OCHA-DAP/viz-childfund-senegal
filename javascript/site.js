@@ -4,11 +4,11 @@ var formatDecimalComma = d3.format(",.0f");
 function generateMap (data) {
     var presenceColor = '#7AB800';
     var width = $('#map').width(),
-        height= 250;
+        height= 300;
     var map ;
-    var mapscale = 2700;
+    var mapscale = 3500;
     var mapprojection = d3.geo.mercator()
-                              .center([-15.070, 14.505]) //14.504/-15.070
+                              .center([-14.50, 14.50]) //14.504/-15.070
                               .scale(mapscale)
                               .translate([width / 2, height / 2]);
     map = d3.select('#map').append('svg')

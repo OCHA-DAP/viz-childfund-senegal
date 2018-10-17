@@ -39,8 +39,7 @@ hr{
 
 
 .keyFigures h6{
-    font-size: 0.9em;
-
+    font-size: 1.0em;
 }
 /*
 h1+p {
@@ -48,17 +47,17 @@ h1+p {
 }*/
 
 .kf span {
-    color: #7AB800;
-    font-size: 1.5em;
+    color: #007A45;
+    font-size: 1.6em;
 }
 
 #chart{
     width:100%;
 }
 
-/*.mapSection{
-  padding-top: 80px;
-}*/
+.mapSection{
+  padding-top: 40px;
+}
 
 #map {
   width: 100%;
@@ -77,6 +76,7 @@ h1+p {
 
 .container {
     display: none;
+    width: 1350px;
 }
 
 .loader {
