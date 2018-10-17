@@ -43,23 +43,17 @@ function generateMap (data) {
                 .attr('stroke','#7d868d');
     //map tooltips
     var maptip = d3.select('#map').append('div').attr('class', 'd3-tip map-tip hidden');
-    path.filter('.adm1')
+    path.filter('.present')
         .on('mousemove', function(d) {
-            console.log(d)
-            var mouse = d3.mouse(mapsvg.node()).map( function(d) { return parseInt(d); } );
+            var mouse = d3.mouse(map.node()).map( function(d) { return parseInt(d); } );
             maptip
                 .classed('hidden', false)
                 .attr('style', 'left:'+(mouse[0]+20)+'px; top:'+(mouse[1]+20)+'px')
                 .html(d.properties.admin1Name)
         })
         .on('mouseout',  function(d,i) {
-            // if (!$(this).data('selected'))
-                // $(this).attr('fill', fillColor);
             maptip.classed('hidden', true);
         });
-        // .on('click', function(d,i){
-        //     selectRegion($(this), d.properties.admin1Name);
-        // }); 
 } //generateMap
 
 function generateKeyFigures (data) {
@@ -71,20 +65,14 @@ function generateKeyFigures (data) {
 }
 // generateKeyFigures
 
-var sortData = function (d1, d2) {
-    if (d1.key > d2.key) return 1;
-    if (d1.key < d2.key) return -1;
-    return 0;
-};
-
 function generateDescription(descriptionData){
     $('.loader').remove();
     $('.container').show();
     $('#description-text h1').text(descriptionData[0]['#description+title']);
     $('#description-text p').text(descriptionData[0]['#description'])
 }
-var blue = '#7AB800';
-var blueLight = '#007A45'//'#72B0E0';
+var blue = '#EEF98E';
+var blueLight = '#007A45'//'#7AB800';007A45
 
 function generateSectorCharts(dataS, dataB, chartID) {
 	var chartS = dc.rowChart('#'+chartID+'S');
@@ -133,19 +121,19 @@ function generateSectorCharts(dataS, dataB, chartID) {
 // Get the data from hxl proxy
 var indicsDataCall = $.ajax({
 	type: 'GET',
-	url: 'https://proxy.hxlstandard.org/data.json?strip-headers=on&url=https%3A%2F%2Fdocs.google.com%2Fspreadsheets%2Fd%2F1uLK2ZRKi_cq1gDMYuAa2-uUSSqgQ9eqU2oeL_UxAG0U%2Fedit%3Fusp%3Dsharing',
+	url: 'https://proxy.hxlstandard.org/data.json?strip-headers=on&url=https%3A%2F%2Fdocs.google.com%2Fspreadsheets%2Fd%2F1uLK2ZRKi_cq1gDMYuAa2-uUSSqgQ9eqU2oeL_UxAG0U%2Fedit%3Fusp%3Dsharing&force=on',
 	dataType: 'json',
 });
 
 var dataCall = $.ajax({
 	type: 'GET',
-	url: 'https://proxy.hxlstandard.org/data.json?strip-headers=on&url=https%3A%2F%2Fdocs.google.com%2Fspreadsheets%2Fd%2F1uLK2ZRKi_cq1gDMYuAa2-uUSSqgQ9eqU2oeL_UxAG0U%2Fedit%23gid%3D1688365801',
+	url: 'https://proxy.hxlstandard.org/data.json?strip-headers=on&url=https%3A%2F%2Fdocs.google.com%2Fspreadsheets%2Fd%2F1uLK2ZRKi_cq1gDMYuAa2-uUSSqgQ9eqU2oeL_UxAG0U%2Fedit%23gid%3D1688365801&force=on',
 	dataType: 'json',
 });
 // description text
 var descriptionCall = $.ajax({
     type: 'GET',
-    url: 'https://proxy.hxlstandard.org/data.json?strip-headers=on&url=https%3A%2F%2Fdocs.google.com%2Fspreadsheets%2Fd%2F1uLK2ZRKi_cq1gDMYuAa2-uUSSqgQ9eqU2oeL_UxAG0U%2Fedit%23gid%3D187500782',
+    url: 'https://proxy.hxlstandard.org/data.json?strip-headers=on&url=https%3A%2F%2Fdocs.google.com%2Fspreadsheets%2Fd%2F1uLK2ZRKi_cq1gDMYuAa2-uUSSqgQ9eqU2oeL_UxAG0U%2Fedit%23gid%3D187500782&force=on',
     dataType: 'json',
 });
 
