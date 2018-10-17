@@ -13,6 +13,7 @@
 	    <script src="javascript/d3.min.js"></script>
 	    <script src="javascript/c3.min.js"></script>
 	    <script src="javascript/d3.tip.min.js"></script>
+	    <script src="javascript/topojson.v1.min.js"></script>
 	    <script src="javascript/crossfilter.js"></script>
 	    <script src="javascript/dc.js"></script>
 	    <script src="javascript/leaflet.js"></script>
@@ -30,7 +31,7 @@
 			<div class="col-md-8">
 				<div class="row">
 					<div class="col-md-6">
-                        <h2>Education</h2>
+                        <h2>EDUCATION</h2>
                         <div class="col-md-12">
                             <h6>Structures</h6>
 						    <div id="educationS"></div>
@@ -41,7 +42,7 @@
                         </div>
 					</div><!--col-sm-6-->
 					<div class="col-md-6">
-						<h2>Moyens d'existence</h2>
+						<h2>MOYENS D'EXISTENCE</h2>
 						<div class="col-md-12">
                             <h6>Structures</h6>
 						    <div id="mExistenceS"></div>
@@ -52,7 +53,7 @@
                         </div>
 					</div>
 					<div class="col-md-6">
-						<h2>Protection</h2>
+						<h2>PROTECTION</h2>
 						<div class="col-md-12">
                             <h6>Structures</h6>
 						    <div id="protectionS"></div>
@@ -63,7 +64,7 @@
                         </div>
 					</div>
 					<div class="col-md-6">
-						<h2>Santé/Nutrition</h2>
+						<h2>SANTE/NUTRITION</h2>
 						<div class="col-md-12">
                             <h6>Structures</h6>
 						    <div id="santeS"></div>
@@ -77,17 +78,21 @@
 			</div><!-- col-md-8 -->
 			<div class="col-md-4">
 				<div class="row">
-					<h2>Chiffres clés</h2>
-					<div class="keyFigures"></div>
+					<div class="col-m-12">
+						<h2>CHIFFRES CLES</h2>
+						<div class="keyFigures"></div>
+					</div>
 				</div>
 				<div class="clearfix"></div>
 				<div class="row mapSection">
-					<h2>Présence de Childfund Sénégal</h2>
-					<img class="img-responsive center-block carte" src="sene.png" alt="">
+					<div class="col-sm-12">
+						<h2>Présence de Childfund Sénégal</h2>
+						<div id="map"></div>
+					</div>
 				</div>
-				<div class="row">
+<!-- 				<div class="row">
 					<p class="small">Télécharger les donnees sur HDX | Powered By HDX</p>
-				</div>
+				</div> -->
 			</div><!-- col-md-4 -->
 		</div> <!-- container -->
 		<script src="javascript/site.js" ></script>

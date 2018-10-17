@@ -2,7 +2,7 @@ body, h1, h2, h3, h4, h5, h6, span {
     font-family: 'Source Sans Pro', sans-serif;
 }
 h2 {
-  color:#3D3D3D;
+  color:#007A45;
   font-size: 20px;
 
 }
@@ -19,16 +19,10 @@ h4 {
     color:#3D3D3D;
 }
 
-body {
-    position: relative;
-}
-ul.nav-pills {
-    top: 20px;
-    position: fixed;
-}
-div.col-8 div {
-/*    height: 800px;*/
-  margin-top: 20px;
+
+div.col-md-6 {
+  padding-right: 0px;
+  padding-left: 0px;
 
 }
 
@@ -37,10 +31,11 @@ hr{
   margin-bottom: 5px;
 }
 
-h1 {
-	font-family: 'Gotham-Bold';
-	font-size: 19px;
-	margin-top: 0;
+
+
+.keyFigures h6{
+    font-size: 0.9em;
+
 }
 
 h1+p {
@@ -49,20 +44,19 @@ h1+p {
 
 .kf span {
     color: #7AB800;
+    font-size: 1.5em;
 }
 
 #chart{
     width:100%;
 }
 
-.mapSection{
+/*.mapSection{
   padding-top: 80px;
-}
+}*/
 
-.carte {
-  height: 275px;
-  width: 75%;
-  margin: 0 auto;
+#map {
+  width: 100%;
 }
 
 /*.description{
