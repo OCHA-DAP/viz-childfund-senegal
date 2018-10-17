@@ -78,6 +78,8 @@ var sortData = function (d1, d2) {
 };
 
 function generateDescription(descriptionData){
+    $('.loader').remove();
+    $('.container').show();
     $('#description-text h2').text(descriptionData[0]['#description+title']);
     $('#description-text p').text(descriptionData[0]['#description'])
 }
@@ -159,9 +161,9 @@ $.when(indicsDataCall, dataCall, descriptionCall, geoDataCall).then(function(ind
     var descriptionData = hxlProxyToJSON(descriptionArgs[0]);
 
     var geoData = topojson.feature(geoDataArgs[0], geoDataArgs[0].objects.senadm1);
+
     generateDescription(descriptionData);
     generateMap(geoData);
-
 	generateKeyFigures(data);
 //	 console.log(data)
 	// generateCharts(data);
