@@ -4,8 +4,13 @@ body, h1, h2, h3, h4, h5, h6, span {
 h2 {
   color:#007A45;
   font-size: 20px;
-
 }
+
+h1 {
+  color:#007A45;
+  font-size: 28px;
+}
+
 h4 {
   color:#3D3D3D;
   font-size: 20px;
@@ -37,10 +42,10 @@ hr{
     font-size: 0.9em;
 
 }
-
+/*
 h1+p {
 	margin-bottom: 20px;
-}
+}*/
 
 .kf span {
     color: #7AB800;

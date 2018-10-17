@@ -80,7 +80,7 @@ var sortData = function (d1, d2) {
 function generateDescription(descriptionData){
     $('.loader').remove();
     $('.container').show();
-    $('#description-text h2').text(descriptionData[0]['#description+title']);
+    $('#description-text h1').text(descriptionData[0]['#description+title']);
     $('#description-text p').text(descriptionData[0]['#description'])
 }
 var blue = '#7AB800';
