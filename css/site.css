@@ -47,17 +47,17 @@ h1+p {
 }*/
 
 .kf span {
-    color: #007A45;
-    font-size: 1.5em;
+    color: #7AB800;
+    font-size: 1.3em;
 }
 
 #chart{
     width:100%;
 }
 
-.mapSection{
-  padding-top: 70px;
-}
+/*.mapSection{
+  padding-top: 0px;
+}*/
 
 #map {
   width: 100%;
@@ -90,4 +90,13 @@ h1+p {
     top: 50%;
     transform: translate(-50%,-50%);
     width: 70px;
+}
+
+.d3-tip {
+    padding: 5px;
+    background-color: '#007A45';
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    font-size: 14px;
 }

@@ -2,7 +2,7 @@
 var formatDecimalComma = d3.format(",.0f");
 
 function generateMap (data) {
-    var presenceColor = '#7AB800';
+    var presenceColor = '#EEF98E';
     var width = $('#map').width(),
         height= 300;
     var map ;
@@ -31,6 +31,9 @@ function generateMap (data) {
                     d.properties.admin1Name == 'Fatick' ? present = true :
                     d.properties.admin1Name == 'Sedhiou' ? present = true :
                     d.properties.admin1Name == 'Tambacounda' ? present = true :
+                    d.properties.admin1Name == 'Kedougou' ? present = true :
+                    d.properties.admin1Name == 'Saint-Louis' ? present = true :
+                    d.properties.admin1Name == 'Matam' ? present = true :
                     d.properties.admin1Name == 'Kolda' ? present = true : null;
 
                     var presence = (present == true) ? 'present' : 'absent';
@@ -72,7 +75,13 @@ function generateDescription(descriptionData){
     $('#description-text p').text(descriptionData[0]['#description'])
 }
 var blue = '#EEF98E';
-var blueLight = '#007A45'//'#7AB800';007A45
+var blueLight = '#7AB800'//'#7AB800';007A45
+
+//tooltip
+var rowtip = d3.tip().attr('class', 'd3-tip').html(function (d) {
+    return d.key + ': ' + d3.format('0,000')(d.value);
+
+});
 
 function generateSectorCharts(dataS, dataB, chartID) {
 	var chartS = dc.rowChart('#'+chartID+'S');
@@ -102,7 +111,7 @@ function generateSectorCharts(dataS, dataB, chartID) {
 		  	return group.top(Infinity);
 		  })
 		  .elasticX(true)
-		  .xAxis().ticks(4);
+		  .xAxis().ticks(5);
     chartB
 		  .width(400)
 		  .height(150)
@@ -113,9 +122,12 @@ function generateSectorCharts(dataS, dataB, chartID) {
 		  	return group.top(Infinity);
 		  })
 		  .elasticX(true)
-		  .xAxis().ticks(4);
+		  .xAxis().ticks(5);
 
 	dc.renderAll();
+    d3.selectAll('g.row').call(rowtip);
+    d3.selectAll('g.row').on('mouseover', rowtip.show).on('mouseout', rowtip.hide);
+
 } //generateSectorCharts
 
 // Get the data from hxl proxy
