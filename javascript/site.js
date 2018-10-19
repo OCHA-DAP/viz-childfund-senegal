@@ -32,7 +32,7 @@ function generateMap (data) {
                     d.properties.admin1Name == 'Sedhiou' ? present = true :
                     d.properties.admin1Name == 'Tambacounda' ? present = true :
                     d.properties.admin1Name == 'Kedougou' ? present = true :
-                    d.properties.admin1Name == 'Saint-Louis' ? present = true :
+                    d.properties.admin1Name == 'Saint Louis' ? present = true :
                     d.properties.admin1Name == 'Matam' ? present = true :
                     d.properties.admin1Name == 'Kolda' ? present = true : null;
 
