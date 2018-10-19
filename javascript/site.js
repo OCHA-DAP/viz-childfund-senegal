@@ -208,12 +208,12 @@ $.when(indicsDataCall, dataCall, descriptionCall, geoDataCall).then(function(ind
     };
     for(d in mExistenceData){
 		if (mExistenceData[d]['type'] == 'Bénéficiaires') {
-            mExistenceDataS.push({indicateur: mExistenceData[d]['indicateur'],valeur:parseInt(mExistenceData[d]['valeur'])});
+            mExistenceDataB.push({indicateur: mExistenceData[d]['indicateur'],valeur:parseInt(mExistenceData[d]['valeur'])});
         }
     };
        for(d in mExistenceData){
 		if (mExistenceData[d]['type'] == 'Structure') {
-            mExistenceDataB.push({indicateur:mExistenceData[d]['indicateur'],valeur:parseInt(mExistenceData[d]['valeur'])});
+            mExistenceDataS.push({indicateur:mExistenceData[d]['indicateur'],valeur:parseInt(mExistenceData[d]['valeur'])});
         }
     };
     for(d in santeData){
@@ -230,7 +230,7 @@ $.when(indicsDataCall, dataCall, descriptionCall, geoDataCall).then(function(ind
 	generateSectorCharts(educationDataS, educationDataB, 'education');
 	generateSectorCharts(protectionDataS, protectionDataB, 'protection');
 	generateSectorCharts(santeDataS, santeDataB, 'sante');
-	generateSectorCharts(mExistenceDataS, mExistenceDataS, 'mExistence');
+	generateSectorCharts(mExistenceDataS, mExistenceDataB, 'mExistence');
 });
 
 function hxlProxyToJSON(input){
