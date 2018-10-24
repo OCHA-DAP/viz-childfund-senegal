@@ -188,22 +188,22 @@ $.when(indicsDataCall, dataCall, descriptionCall, geoDataCall).then(function(ind
 	}
     for(d in educationData){
 		if (educationData[d]['type'] == 'Bénéficiaires') {
-            educationDataS.push({indicateur:educationData[d]['indicateur'],valeur:parseInt(educationData[d]['valeur'])});
+            educationDataB.push({indicateur:educationData[d]['indicateur'],valeur:parseInt(educationData[d]['valeur'])});
         }
     };
        for(d in educationData){
 		if (educationData[d]['type'] == 'Structure') {
-            educationDataB.push({indicateur:educationData[d]['indicateur'],valeur:parseInt(educationData[d]['valeur'])});
+            educationDataS.push({indicateur:educationData[d]['indicateur'],valeur:parseInt(educationData[d]['valeur'])});
         }
     };
       for(d in protectionData){
 		if (protectionData[d]['type'] == 'Bénéficiaires') {
-            protectionDataS.push({indicateur: protectionData[d]['indicateur'],valeur:parseInt(protectionData[d]['valeur'])});
+            protectionDataB.push({indicateur: protectionData[d]['indicateur'],valeur:parseInt(protectionData[d]['valeur'])});
         }
     };
        for(d in protectionData){
 		if (protectionData[d]['type'] == 'Structure') {
-            protectionDataB.push({indicateur:protectionData[d]['indicateur'],valeur:parseInt(protectionData[d]['valeur'])});
+            protectionDataS.push({indicateur:protectionData[d]['indicateur'],valeur:parseInt(protectionData[d]['valeur'])});
         }
     };
     for(d in mExistenceData){
@@ -218,12 +218,12 @@ $.when(indicsDataCall, dataCall, descriptionCall, geoDataCall).then(function(ind
     };
     for(d in santeData){
 		if (santeData[d]['type'] == 'Bénéficiaires') {
-            santeDataS.push({indicateur: santeData[d]['indicateur'],valeur:parseInt(santeData[d]['valeur'])});
+            santeDataB.push({indicateur: santeData[d]['indicateur'],valeur:parseInt(santeData[d]['valeur'])});
         }
     };
        for(d in santeData){
 		if (santeData[d]['type'] == 'Structure') {
-            santeDataB.push({indicateur:santeData[d]['indicateur'],valeur:parseInt(santeData[d]['valeur'])});
+            santeDataS.push({indicateur:santeData[d]['indicateur'],valeur:parseInt(santeData[d]['valeur'])});
         }
     };
 
