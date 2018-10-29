@@ -8,7 +8,7 @@ function generateMap (data) {
     var map ;
     var mapscale = 3100;
     var mapprojection = d3.geo.mercator()
-                              .center([-13.95, 14.50]) //14.504/-15.070
+                              .center([-14.10, 14.50]) //14.504/-15.070
                               .scale(mapscale)
                               .translate([width / 2, height / 2]);
     map = d3.select('#map').append('svg')
