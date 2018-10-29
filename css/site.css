@@ -76,8 +76,8 @@ h1+p {
 
 .container {
     display: none;
-/*    width: 1350px;
-*/}
+    width: 1280px;
+}
 
 .loader {
     animation: spin 2s linear infinite;
