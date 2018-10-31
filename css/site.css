@@ -76,7 +76,7 @@ h1+p {
 
 .container {
     display: none;
-    width: 1240px;
+    /*width: 1240px;*/
 }
 
 .loader {
