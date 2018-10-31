@@ -6,9 +6,9 @@ function generateMap (data) {
     var width = $('#map').width(),
         height= 300;
     var map ;
-    var mapscale = 3100;
+    var mapscale = 3000;
     var mapprojection = d3.geo.mercator()
-                              .center([-14.10, 14.50]) //14.504/-15.070
+                              .center([-14.50, 14.50]) //14.504/-15.070
                               .scale(mapscale)
                               .translate([width / 2, height / 2]);
     map = d3.select('#map').append('svg')
